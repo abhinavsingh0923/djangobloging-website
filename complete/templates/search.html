@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+{% block heading %}Search results{% endblock heading %}
+
+{% block body %}
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for post in allposts %}
+            <div class="col">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">{{post.title}}</h5>
+                            <h6 class="text-primary">{{post.author}}</h6>
+                        </div>
+                        <p class="card-text">{{post.content}}.</p>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

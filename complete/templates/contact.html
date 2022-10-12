@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block contactactive %}active{% endblock contactactive %}
+
+{% block heading %}Contact{% endblock heading %}
+
+{% block body %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control mt-3" name="name"  placeholder="name"
+                id="name" aria-describedby="emailHelp" required>
+            <input type="text" class="form-control mt-3" name="email" placeholder="email"
+                id="email" aria-describedby="emailHelp" required>
+            <textarea name="suggestion" id="suggestion" class="form-control mt-3" cols="30"
+                rows="10" style="height: 64px;" placeholder="suggestion" required></textarea>
+        </div>
+        <button type="submit" class=" btn btn-primary mb-3 me-4">Submit</button>
+    </form>
+</div>
+{% endblock body %}

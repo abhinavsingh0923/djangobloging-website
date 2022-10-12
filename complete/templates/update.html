@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit{% endblock title %}
+
+{% block yourblogactive %}active{% endblock yourblogactive %}
+
+{% block heading %}Update your content{% endblock heading %}
+
+{% block body %}
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+
+        <button type="submit" class=" btn btn-primary mb-3 me-4">Submit</button>
+        <a href="{% url 'yourblog' %}" type="button" class="btn btn-primary mb-3">go back</a>
+    </form>
+</div>
+
+
+{% endblock body %}
