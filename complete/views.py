@@ -2,6 +2,7 @@ from multiprocessing import context
 from django.contrib.auth.models import User
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 from .forms import *
@@ -24,7 +25,7 @@ def contact(request):
     return render(request,'contact.html')
 
 
-
+@login_required
 def blog(request):
     if request.method=='POST':
         fm= postfunction(request.POST)
@@ -45,6 +46,7 @@ def search(request):
     return render(request,'search.html',params)
 
 # yourblog
+@login_required
 def yourblog(request):
     totalposts= Post.objects.filter(author__icontains=request.user)
     params={'totalposts':totalposts}
@@ -53,6 +55,7 @@ def yourblog(request):
 
 
 # for updateing the record 
+@login_required
 def update(request,sno):
     if request.method=='POST':
         pi= Post.objects.get(pk=sno)
@@ -67,6 +70,7 @@ def update(request,sno):
 
 
 # for deleting the data
+@login_required
 def deleteblog(request,sno):
     if request.method=='POST':
         deletedata=Post.objects.get(pk=sno)
